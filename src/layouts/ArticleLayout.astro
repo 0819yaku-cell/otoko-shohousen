@@ -2,7 +2,6 @@
 import Layout from './Layout.astro';
 import AuthorBio from '../components/AuthorBio.astro';
 import { getCollection } from 'astro:content';
-import articlesJson from '../data/articles.json';
 
 interface Props {
   title?: string;
@@ -28,31 +27,18 @@ const normalizeEntries = (entries: any[], prefix: string) =>
     };
   });
 
-const [kampoEntries, otcEntries, studyEntries, careerEntries, examEntries] = await Promise.all([
-  getCollection('kampo'),
-  getCollection('otc'),
-  getCollection('study'),
-  getCollection('career'),
-  getCollection('exam'),
+const [agaEntries, edEntries, mensHealthEntries, clinicEntries] = await Promise.all([
+  getCollection('aga'),
+  getCollection('ed'),
+  getCollection('mens-health'),
+  getCollection('clinic'),
 ]);
 
-const jsonNormalized = (articlesJson as any[]).map(a => ({
-  href: `/articles/${a.slug}`,
-  slug: a.slug,
-  title: a.title,
-  description: a.description ?? '',
-  date: a.date,
-  image: a.image,
-  category: a.category,
-}));
-
 const allArticles = [
-  ...normalizeEntries(kampoEntries, 'kampo'),
-  ...normalizeEntries(otcEntries, 'otc'),
-  ...normalizeEntries(studyEntries, 'study'),
-  ...normalizeEntries(careerEntries, 'career'),
-  ...normalizeEntries(examEntries, 'exam'),
-  ...jsonNormalized,
+  ...normalizeEntries(agaEntries, 'aga'),
+  ...normalizeEntries(edEntries, 'ed'),
+  ...normalizeEntries(mensHealthEntries, 'mens-health'),
+  ...normalizeEntries(clinicEntries, 'clinic'),
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const relatedArticles = category
