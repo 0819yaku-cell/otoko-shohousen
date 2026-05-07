@@ -34,42 +34,75 @@ const articles = [
 <Layout title="男の処方箋" description="男性の健康・薬・セルフケアについて、薬の知識をわかりやすく解説するサイトです。">
   <main class="container page-wrapper py-8">
 
-    <!-- Hero -->
-    <section class="text-center mb-10 px-4">
-      <h1 class="text-2xl font-black text-slate-800 leading-tight mb-3">
-        男の処方箋
-      </h1>
-      <p class="text-sm text-slate-500 font-bold leading-relaxed">
-        男性の健康・薬・セルフケアを、薬の専門知識でわかりやすく解説します。
+    <!-- ① ヒーローエリア -->
+    <section class="mb-8 px-2">
+      <img
+        src="/hero.webp"
+        alt="男の処方箋"
+        class="w-full rounded-2xl object-cover mb-5"
+        loading="eager"
+      />
+      <p class="text-base font-black text-slate-800 text-center leading-snug mb-5">
+        クリニックに忖度しない薬剤師が本音で解説
       </p>
+      <div class="flex flex-col gap-3">
+        <a
+          href="/articles/ed"
+          class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-sky-500 text-white font-black text-sm hover:bg-sky-600 transition-colors shadow-sm"
+        >
+          💊 ED治療薬を比較する
+        </a>
+        <a
+          href="/articles/aga"
+          class="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-slate-700 text-white font-black text-sm hover:bg-slate-800 transition-colors shadow-sm"
+        >
+          💇 AGA治療薬を比較する
+        </a>
+      </div>
     </section>
 
-    <!-- カテゴリナビ -->
+    <!-- ② 信頼バッジ -->
     <section class="mb-8 px-2">
       <div class="grid grid-cols-3 gap-2">
         {[
-          { href: '/articles/aga',         label: 'AGA（薄毛・育毛）', emoji: '💇' },
+          { emoji: '💊', label: '薬剤師歴18年' },
+          { emoji: '📄', label: 'IF・論文ベース' },
+          { emoji: '🏥', label: '調剤薬局長が運営' },
+        ].map(({ emoji, label }) => (
+          <div class="flex flex-col items-center gap-1 p-3 bg-sky-50 border border-sky-100 rounded-xl text-center">
+            <span class="text-xl">{emoji}</span>
+            <span class="text-[11px] font-bold text-slate-700 leading-tight">{label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ③ カテゴリ導線 -->
+    <section class="mb-8 px-2">
+      <h2 class="text-base font-black text-slate-800 mb-3">カテゴリから探す</h2>
+      <div class="grid grid-cols-2 gap-2">
+        {[
           { href: '/articles/ed',          label: 'ED（勃起不全）',   emoji: '💊' },
-          { href: '/articles/mens-health', label: '男性の悩み',        emoji: '💪' },
+          { href: '/articles/aga',         label: 'AGA（薄毛・育毛）', emoji: '💇' },
           { href: '/articles/clinic',      label: 'クリニック比較',    emoji: '🏥' },
-          { href: '/about',                label: '運営者情報',        emoji: '👤' },
+          { href: '/articles/mens-health', label: '男性の悩み',        emoji: '💪' },
         ].map(({ href, label, emoji }) => (
           <a
             href={href}
-            class="flex flex-col items-center gap-1 p-3 bg-white border border-slate-200 rounded-xl text-center hover:border-sky-300 hover:bg-sky-50 transition-colors"
+            class="flex flex-col items-center gap-1 p-4 bg-white border border-slate-200 rounded-xl text-center hover:border-sky-300 hover:bg-sky-50 transition-colors"
           >
-            <span class="text-xl">{emoji}</span>
+            <span class="text-2xl">{emoji}</span>
             <span class="text-xs font-bold text-slate-700">{label}</span>
           </a>
         ))}
       </div>
     </section>
 
-    <!-- 最新記事 -->
+    <!-- ④ 新着記事 -->
     {articles.length > 0 ? (
-      <section class="mb-8">
-        <h2 class="text-base font-black text-slate-800 px-2 mb-4 flex items-center gap-2">
-          <span class="text-sky-500">📋</span> 最新記事
+      <section class="mb-8 px-2">
+        <h2 class="text-base font-black text-slate-800 mb-4 flex items-center gap-2">
+          <span class="text-sky-500">📋</span> 新着記事
         </h2>
         <div class="flex flex-col gap-4">
           {articles.map(article => (
@@ -99,12 +132,27 @@ const articles = [
         </div>
       </section>
     ) : (
-      <section class="mb-8 px-4 text-center">
+      <section class="mb-8 px-2 text-center">
         <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8">
           <p class="text-slate-500 font-bold text-sm">記事を準備中です。しばらくお待ちください。</p>
         </div>
       </section>
     )}
+
+    <!-- ⑤ 運営者紹介 -->
+    <section class="mb-4 px-2">
+      <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+        <p class="text-sm text-slate-600 font-medium leading-relaxed mb-3">
+          調剤薬局長として18年、ED・AGA処方箋を日常的に扱う現役薬剤師が運営しています。
+        </p>
+        <a
+          href="/about"
+          class="text-sm font-bold text-sky-600 hover:underline"
+        >
+          運営者詳細を見る →
+        </a>
+      </div>
+    </section>
 
   </main>
 </Layout>
