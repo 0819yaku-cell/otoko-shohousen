@@ -61,24 +61,24 @@ const categoryGroups = [
 
         <!-- EDボタン：sky-500ボーダー、三日月＋錠剤SVG -->
         <a href="#ed-section" class="hero-icon-btn hero-icon-btn--ed">
-          <svg viewBox="0 0 32 32" width="44" height="44" fill="none" aria-hidden="true">
-            <!-- シャープな細い三日月のみ -->
-            <path d="M17 4C10 4 4 9 4 16C4 23 10 28 17 28C13 25.5 11 22 11 16C11 10 13 6.5 17 4z"
-              stroke="#0ea5e9" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg viewBox="0 0 32 32" width="48" height="48" fill="none" aria-hidden="true">
+            <!-- 三日月を45度傾けて斜め向きに -->
+            <g transform="rotate(45, 16, 16)">
+              <path d="M17 4C10 4 4 9 4 16C4 23 10 28 17 28C13 25.5 11 22 11 16C11 10 13 6.5 17 4z"
+                stroke="#0ea5e9" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
           </svg>
           <span class="hero-icon-btn__label">夜の悩み・ED治療</span>
         </a>
 
-        <!-- AGAボタン：blue-600ボーダー、横顔＋落ちる毛SVG -->
+        <!-- AGAボタン：blue-600ボーダー、M字ハゲSVG -->
         <a href="#aga-section" class="hero-icon-btn hero-icon-btn--aga">
-          <svg viewBox="0 0 32 32" width="44" height="44" fill="none" aria-hidden="true">
-            <!-- M字ハゲ：正面頭部シルエット -->
-            <!-- 顔・頭の輪郭（下半分は丸、上はM字ライン） -->
-            <path d="M5 20 C5 11 10 6 16 6 C22 6 27 11 27 20 C27 26 22 30 16 30 C10 30 5 26 5 20z"
+          <svg viewBox="0 0 32 32" width="48" height="48" fill="none" aria-hidden="true">
+            <!-- 頭部アウトライン -->
+            <circle cx="16" cy="22" r="11" stroke="#2563eb" stroke-width="1.4"/>
+            <!-- M字の生え際（中央が凹んで両サイドが残る形） -->
+            <path d="M7 17 C8 11 11 9 12 10 L16 14 L20 10 C21 9 24 11 25 17"
               stroke="#2563eb" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- M字の生え際ライン -->
-            <path d="M5 20 C5 14 8 10 11 9 L13 14 L16 10 L19 14 L21 9 C24 10 27 14 27 20"
-              stroke="#2563eb" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </svg>
           <span class="hero-icon-btn__label">AGA・薄毛の悩み</span>
         </a>
