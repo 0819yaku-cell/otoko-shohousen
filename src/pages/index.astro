@@ -52,7 +52,11 @@ const categoryGroups = [
       <h1 class="text-base font-black text-slate-700 text-center leading-snug mb-3">
         クリニックに忖度しない薬剤師が本音で解説
       </h1>
-      <p class="text-sm text-slate-500 text-center mb-8">あなたの悩みを選んでください</p>
+      <div class="flex justify-center mb-8">
+        <span class="text-sm font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-1.5">
+          ↓ あなたの悩みを選んでください
+        </span>
+      </div>
       <div class="grid grid-cols-2 gap-5">
 
         <!-- EDボタン：sky-500ボーダー、三日月＋錠剤SVG -->
@@ -68,12 +72,13 @@ const categoryGroups = [
         <!-- AGAボタン：blue-600ボーダー、横顔＋落ちる毛SVG -->
         <a href="#aga-section" class="hero-icon-btn hero-icon-btn--aga">
           <svg viewBox="0 0 32 32" width="44" height="44" fill="none" aria-hidden="true">
-            <!-- 頭部シルエット（丸） -->
-            <circle cx="16" cy="20" r="9" stroke="#2563eb" stroke-width="1.4"/>
-            <!-- 上から3本の短い縦線が落ちてくる -->
-            <line x1="11" y1="2" x2="11" y2="10" stroke="#2563eb" stroke-width="1.4" stroke-linecap="round"/>
-            <line x1="16" y1="1" x2="16" y2="9"  stroke="#2563eb" stroke-width="1.4" stroke-linecap="round"/>
-            <line x1="21" y1="2" x2="21" y2="10" stroke="#2563eb" stroke-width="1.4" stroke-linecap="round"/>
+            <!-- M字ハゲ：正面頭部シルエット -->
+            <!-- 顔・頭の輪郭（下半分は丸、上はM字ライン） -->
+            <path d="M5 20 C5 11 10 6 16 6 C22 6 27 11 27 20 C27 26 22 30 16 30 C10 30 5 26 5 20z"
+              stroke="#2563eb" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- M字の生え際ライン -->
+            <path d="M5 20 C5 14 8 10 11 9 L13 14 L16 10 L19 14 L21 9 C24 10 27 14 27 20"
+              stroke="#2563eb" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </svg>
           <span class="hero-icon-btn__label">AGA・薄毛の悩み</span>
         </a>
