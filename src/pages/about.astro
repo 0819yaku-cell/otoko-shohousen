@@ -4,18 +4,16 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="運営者情報 | 男の処方箋"
-  description="otoko-shohousen.com運営者Hirokiのプロフィール。薬剤師歴18年・薬局長歴10年の現役薬剤師が、男性の健康・薬・セルフケアについてわかりやすく解説しています。"
+  description="男の処方箋の運営者プロフィール。薬剤師歴18年・薬局長歴10年の現役薬剤師が、AGA・EDを中心としたメンズヘルスについて薬剤師目線で本音解説しています。"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Hiroki",
     "jobTitle": "薬剤師・薬局長",
-    "description": "薬剤師歴18年・薬局長歴10年。全国約50店舗の薬局グループで新卒薬剤師の教育担当。",
+    "description": "薬剤師歴18年・薬局長歴10年。調剤薬局長として日々処方箋に向き合う現役薬剤師。",
     "url": "https://otoko-shohousen.com/about/",
-    "image": "https://otoko-shohousen.com/avatar.png",
-    "sameAs": ["https://x.com/touhan_kusuri"],
-    "knowsAbout": ["登録販売者試験", "OTC医薬品", "漢方薬", "薬剤師実務"],
+    "knowsAbout": ["AGA治療", "ED治療", "メンズヘルス", "医薬品情報", "薬剤師実務"],
     "memberOf": {
       "@type": "Organization",
       "name": "日本薬剤師会"
@@ -26,6 +24,7 @@ import Layout from '../layouts/Layout.astro';
       {"@type": "EducationalOccupationalCredential", "name": "かかりつけ薬剤師"}
     ]
   })}></script>
+
   <div class="container page-wrapper py-8 animate-fade-in mx-auto px-4 sm:px-6">
     <header class="mb-8 text-center mt-4">
       <h1 class="text-2xl font-extrabold text-slate-800 tracking-tight">運営者情報</h1>
@@ -37,15 +36,15 @@ import Layout from '../layouts/Layout.astro';
       <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8">
         <div class="flex flex-col items-center mb-5">
           <div class="w-24 h-24 bg-sky-50 rounded-full border-4 border-sky-100 flex items-center justify-center overflow-hidden mb-4 shadow-sm">
-            <img src="/pharmacist.webp" alt="運営者 Hiroki" class="w-full h-full object-cover" />
+            <span class="text-4xl">💊</span>
           </div>
-          <h2 class="text-xl font-bold text-slate-800 mb-1">Hiroki（ひろき）</h2>
-          <p class="text-xs font-bold text-sky-700 mb-3">薬剤師・薬局長｜薬剤師歴18年・薬局長歴10年</p>
+          <h2 class="text-xl font-bold text-slate-800 mb-1">匿名薬剤師（Hiroki）</h2>
+          <p class="text-xs font-bold text-sky-700 mb-3">薬剤師・調剤薬局長｜薬剤師歴18年</p>
           <p class="text-center text-sm leading-relaxed font-medium text-slate-700">
-            2008年に薬剤師免許を取得。病院薬剤部で5年間、入院患者の調剤・病棟業務に従事した後、2013年より調剤薬局勤務へ。2015年からは薬局長として、<strong>1日処方箋80〜90枚規模の調剤薬局</strong>で薬局運営・スタッフ教育にあたっています。現在は、<strong>全国約50店舗の薬局グループで新卒薬剤師の教育担当</strong>も兼任。
+            2008年に薬剤師免許を取得。病院薬剤部で5年間、入院患者の調剤・病棟業務に従事した後、2013年より調剤薬局勤務へ。2015年からは薬局長として、<strong>1日処方箋80〜90枚規模の調剤薬局</strong>を運営しています。
           </p>
           <p class="text-center text-sm leading-relaxed font-medium text-slate-700 mt-2">
-            妻も薬剤師。9歳・6歳・3歳の3児の父として、日常的に子どもの市販薬選びを実践中。薬剤師としての専門知識と、子どもの健康を守る親目線、両方からお届けします。
+            日々の業務でED治療薬・AGA治療薬の処方箋を数多く扱い、患者さんからの相談に向き合い続けてきました。「クリニックには聞きにくい」「ネットの情報が信用できない」という声を受け、<strong>薬剤師目線の本音情報</strong>を届けるためこのサイトを立ち上げました。
           </p>
         </div>
 
@@ -53,6 +52,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
           <p class="text-sm font-bold text-slate-700 mb-2">🎓 保有資格・所属</p>
           <ul class="space-y-1">
+            <li class="text-sm text-slate-600 font-medium flex items-center gap-2"><span class="text-sky-500">✓</span>薬剤師（国家資格）</li>
             <li class="text-sm text-slate-600 font-medium flex items-center gap-2"><span class="text-sky-500">✓</span>研修認定薬剤師</li>
             <li class="text-sm text-slate-600 font-medium flex items-center gap-2"><span class="text-sky-500">✓</span>かかりつけ薬剤師（実施中）</li>
             <li class="text-sm text-slate-600 font-medium flex items-center gap-2"><span class="text-sky-500">✓</span>日本薬剤師会 会員</li>
@@ -65,41 +65,18 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
           <span class="text-xl">💡</span> このサイトを立ち上げた理由
         </h2>
-        <p class="text-sm leading-relaxed font-medium text-slate-700">
-          医療費削減とセルフメディケーション推進の流れを受けて、OTC医薬品の役割は年々重要になっています。リスク区分が第2類医薬品に移行する薬も増え、登録販売者の需要は今後さらに拡大していくと考えられます。
+        <p class="text-sm leading-relaxed font-medium text-slate-700 mb-3">
+          薬局長として18年間、ED治療薬やAGA治療薬の処方箋を毎日のように扱ってきました。
+        </p>
+        <p class="text-sm leading-relaxed font-medium text-slate-700 mb-3">
+          患者さんから「バイアグラとシアリス、どっちがいい？」「フィナステリドって副作用が怖いんだけど本当のところどうなの？」という質問を受けるたびに感じていたのが、<strong>「正確で中立な情報がネット上に少なすぎる」</strong>という問題です。
         </p>
         <p class="text-sm leading-relaxed font-medium text-slate-700">
-          受験資格がなく、働きながら取得できる登録販売者は、薬局・ドラッグストアのスタッフ、医療事務、主婦の方など、<strong>自分のキャリアを広げたい方にとって最適な資格</strong>です。
-        </p>
-        <p class="text-sm leading-relaxed font-medium text-slate-700">
-          一方で、登録販売者試験は出題範囲が広く、独学では効率的な学習が難しいのも事実。「スキマ時間にスマホで手軽に、現場のプロが作った質の高い教材で学べる環境を作りたい」──そんな思いでこのサイトを立ち上げました。
-        </p>
-      </section>
-
-      <!-- 薬剤師が運営する理由 -->
-      <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8">
-        <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-          <span class="text-xl">🩺</span> 薬剤師が登録販売者試験対策サイトを運営する理由
-        </h2>
-        <p class="text-sm leading-relaxed font-medium text-slate-700">
-          <strong>日々、登録販売者と一緒に働き、彼らの悩みを間近で見てきたから</strong>です。
-        </p>
-        <p class="text-sm leading-relaxed font-medium text-slate-700">
-          薬局長として、そして新卒薬剤師の教育担当として、現場で登録販売者スタッフと日々接しています。試験に合格して現場に立った後も「この成分、どこまで説明していいんだろう」「この症状、受診を勧めた方がいいのかな」と、<strong>知識不足に悩む登録販売者を数多く見てきました</strong>。
-        </p>
-        <p class="text-sm font-bold text-slate-700 mb-2">だからこそ、このサイトでは次の視点を大切にしています。</p>
-        <ul class="space-y-1 mb-4">
-          <li class="text-sm text-slate-600 font-medium flex items-start gap-2"><span class="text-sky-500 mt-0.5">✓</span>試験で狙われやすいポイント</li>
-          <li class="text-sm text-slate-600 font-medium flex items-start gap-2"><span class="text-sky-500 mt-0.5">✓</span>合格後に現場でつまずきやすい知識のギャップ</li>
-          <li class="text-sm text-slate-600 font-medium flex items-start gap-2"><span class="text-sky-500 mt-0.5">✓</span>薬剤師と登録販売者の視点の違い</li>
-          <li class="text-sm text-slate-600 font-medium flex items-start gap-2"><span class="text-sky-500 mt-0.5">✓</span>処方薬とOTC医薬品の橋渡し</li>
-        </ul>
-        <p class="text-sm leading-relaxed font-medium text-slate-700">
-          「試験に受かるため」だけでなく、「<strong>現場で自信を持って接客できる登録販売者になるため</strong>」の解説を目指しています。
+          クリニックの広告記事はどうしても自院に誘導するバイアスがかかります。このサイトでは、インタビューフォーム（IF）・添付文書・査読済み論文をもとに、<strong>クリニックに忖度しない薬剤師目線の本音</strong>をお届けします。
         </p>
       </section>
 
-      <!-- 情報源のポリシー -->
+      <!-- 情報の信頼性について -->
       <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8">
         <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
           <span class="text-xl">📚</span> 情報源のポリシー
@@ -108,28 +85,12 @@ import Layout from '../layouts/Layout.astro';
           本サイトの医薬品情報は、信頼性の高い一次情報をもとに作成しています。
         </p>
         <ul class="space-y-2">
-          <li class="text-sm text-slate-600 font-medium"><strong class="text-slate-700">医薬品情報：</strong>インタビューフォーム（IF）、添付文書、製造販売業者の公式情報</li>
-          <li class="text-sm text-slate-600 font-medium"><strong class="text-slate-700">制度・試験情報：</strong>厚生労働省「試験問題の作成に関する手引き」、PMDA</li>
-          <li class="text-sm text-slate-600 font-medium"><strong class="text-slate-700">漢方関連：</strong>各メーカーのインタビューフォーム、日本漢方生薬製剤協会の公開資料、成書</li>
+          <li class="text-sm text-slate-600 font-medium"><strong class="text-slate-700">医薬品データ：</strong>インタビューフォーム（IF）・添付文書・PMDA公開情報</li>
+          <li class="text-sm text-slate-600 font-medium"><strong class="text-slate-700">臨床データ：</strong>PubMed・PMCに収載された査読済み論文（実在確認済み）</li>
+          <li class="text-sm text-slate-600 font-medium"><strong class="text-slate-700">制度・承認情報：</strong>厚生労働省・PMDA・医薬品医療機器総合機構の公式情報</li>
         </ul>
         <p class="text-sm leading-relaxed font-medium text-slate-500 mt-3">
-          最新の法令・試験範囲の変更には注意を払っていますが、最終的な確認は必ず公式情報をご参照ください。
-        </p>
-      </section>
-
-      <!-- 読者へのメッセージ -->
-      <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8">
-        <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-          <span class="text-xl">✉️</span> 読者へのメッセージ
-        </h2>
-        <p class="text-sm leading-relaxed font-medium text-slate-700">
-          薬のこと、実はすごく面白いんです。
-        </p>
-        <p class="text-sm leading-relaxed font-medium text-slate-700">
-          最初は「なんとなく」で大丈夫。勉強していくうちに、「この成分、こうやって効くのか！」「この組み合わせ、こういう理由なのか！」って、奥深さにハマっていきますよ。
-        </p>
-        <p class="text-sm leading-relaxed font-medium text-slate-700">
-          受験勉強は孤独になりがちですが、一緒に楽しく学んでいきましょう。合格して「現場で頼られる登録販売者」になる日まで、このサイトが少しでも力になれたら嬉しいです。
+          最新の承認状況・添付文書改訂には注意を払っていますが、最終確認は必ず公式情報をご参照ください。
         </p>
       </section>
 
@@ -138,7 +99,6 @@ import Layout from '../layouts/Layout.astro';
         <h2 class="text-lg font-bold text-slate-800 pb-2 flex items-center gap-2">
           <span class="text-xl">⌛</span> 経歴
         </h2>
-
         <div class="timeline mt-4">
           <div class="timeline-item">
             <div class="timeline-badge"></div>
@@ -148,7 +108,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="timeline-item">
             <div class="timeline-badge"></div>
             <div class="timeline-year">2008〜2013年</div>
-            <div class="timeline-body">病院薬剤部勤務（5年）</div>
+            <div class="timeline-body">病院薬剤部勤務（5年）／入院患者調剤・病棟業務</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-badge"></div>
@@ -158,34 +118,9 @@ import Layout from '../layouts/Layout.astro';
           <div class="timeline-item timeline-item--last">
             <div class="timeline-badge"></div>
             <div class="timeline-year">2015年〜現在</div>
-            <div class="timeline-body">薬局長として勤務（10年）</div>
+            <div class="timeline-body">薬局長として勤務（10年）／ED・AGA処方箋を日常的に取り扱い</div>
           </div>
         </div>
-      </section>
-
-      <!-- 現在の活動 -->
-      <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8">
-        <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-          <span class="text-xl">🌐</span> 現在の活動
-        </h2>
-        <ul class="space-y-3">
-          <li class="text-sm text-slate-700 font-medium flex items-start gap-2">
-            <span class="text-sky-500 mt-0.5 flex-shrink-0">✓</span>
-            <span><strong>薬局長：</strong>1日処方箋80〜90枚規模の調剤薬局で勤務</span>
-          </li>
-          <li class="text-sm text-slate-700 font-medium flex items-start gap-2">
-            <span class="text-sky-500 mt-0.5 flex-shrink-0">✓</span>
-            <span><strong>新卒薬剤師教育担当：</strong>全国約50店舗の薬局グループで新人教育を担当</span>
-          </li>
-          <li class="text-sm text-slate-700 font-medium flex items-start gap-2">
-            <span class="text-sky-500 mt-0.5 flex-shrink-0">✓</span>
-            <span><strong>otoko-shohousen.com：</strong>登録販売者試験対策サイト運営（試験問題480問、漢方・OTC・試験対策記事を公開中）</span>
-          </li>
-          <li class="text-sm text-slate-700 font-medium flex items-start gap-2">
-            <span class="text-sky-500 mt-0.5 flex-shrink-0">✓</span>
-            <span><strong>X（旧Twitter）：</strong><a href="https://x.com/touhan_kusuri" target="_blank" rel="noopener noreferrer" class="text-sky-600 underline">@touhan_kusuri（登録販売者のくすり教室）</a> ── 毎朝7時に試験問題、毎晩20時に薬のトリビアを投稿</span>
-          </li>
-        </ul>
       </section>
 
       <!-- 免責事項 -->
@@ -194,10 +129,10 @@ import Layout from '../layouts/Layout.astro';
           <span class="text-amber-500 text-base">⚠️</span> 免責事項
         </h3>
         <p class="text-xs text-slate-600 leading-relaxed font-medium mb-2">
-          本サイトの解説は学習サポートを目的としており、正確性について最善を尽くしていますが、最新の法令や試験範囲については必ず公式情報（厚生労働省の手引き等）をご確認ください。
+          本サイトの情報は医療行為の代替となるものではありません。ED・AGAの治療については、必ず医師・薬剤師にご相談ください。
         </p>
         <p class="text-xs text-slate-600 leading-relaxed font-medium">
-          本サイトの情報をもとに行われた判断・行動について、運営者は一切の責任を負いかねます。実際の医薬品の使用にあたっては、薬剤師・登録販売者・医師などの専門家にご相談ください。
+          本サイトの情報をもとに行われた判断・行動について、運営者は一切の責任を負いかねます。
         </p>
       </section>
 
@@ -214,7 +149,7 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- アフィリエイト注記 -->
       <p class="text-xs text-slate-400 text-center leading-relaxed px-2">
-        ※当サイトはアフィリエイト広告（Amazonアソシエイト・afb等）を掲載しています。記事内のリンクから商品をご購入いただくと、サイト運営の支援になります。
+        ※当サイトはアフィリエイト広告（Amazonアソシエイト・afb・A8.net等）を掲載しています。記事内のリンクから商品・サービスをご購入いただくと、サイト運営の支援になります。収益は情報の中立性に影響しません。
       </p>
 
     </main>
@@ -226,7 +161,6 @@ import Layout from '../layouts/Layout.astro';
     position: relative;
     padding-left: 1.5rem;
   }
-
   .timeline::before {
     content: '';
     position: absolute;
@@ -237,7 +171,6 @@ import Layout from '../layouts/Layout.astro';
     background-color: #bfdbfe;
     border-radius: 1px;
   }
-
   .timeline-item {
     position: relative;
     display: flex;
@@ -245,11 +178,9 @@ import Layout from '../layouts/Layout.astro';
     gap: 0.125rem;
     padding-bottom: 1.25rem;
   }
-
   .timeline-item--last {
     padding-bottom: 0;
   }
-
   .timeline-badge {
     position: absolute;
     left: -1.5rem;
@@ -261,14 +192,12 @@ import Layout from '../layouts/Layout.astro';
     border-radius: 50%;
     box-shadow: 0 0 0 2px #bfdbfe;
   }
-
   .timeline-year {
     font-size: 0.8rem;
     font-weight: 700;
     color: #1e3a8a;
     letter-spacing: 0.02em;
   }
-
   .timeline-body {
     font-size: 0.9rem;
     font-weight: 500;
