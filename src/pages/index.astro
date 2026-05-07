@@ -40,8 +40,8 @@ const categoryGroups = [
   <main class="container page-wrapper py-6">
 
     <!-- ① ヒーローエリア -->
-    <section class="mb-8 px-2">
-      <div class="hero-image-wrapper mb-4">
+    <section class="mb-12 px-2">
+      <div class="hero-image-wrapper mb-6">
         <img
           src="/hero.webp"
           alt="男の処方箋 クリニックに忖度しない薬剤師が本音で解説"
@@ -49,7 +49,7 @@ const categoryGroups = [
           loading="eager"
         />
       </div>
-      <h1 class="text-base font-black text-slate-800 text-center leading-snug mb-5">
+      <h1 class="text-base font-black text-slate-800 text-center leading-snug mb-7">
         クリニックに忖度しない薬剤師が本音で解説
       </h1>
       <div class="grid grid-cols-2 gap-3">
@@ -75,23 +75,43 @@ const categoryGroups = [
     </section>
 
     <!-- ② 信頼バッジ -->
-    <section class="mb-8 px-2">
+    <section class="mb-12 px-2">
       <div class="grid grid-cols-3 gap-2">
-        {[
-          { emoji: '💊', label: '薬剤師歴18年' },
-          { emoji: '📄', label: 'IF・論文ベース' },
-          { emoji: '🏥', label: '調剤薬局長が運営' },
-        ].map(({ emoji, label }) => (
-          <div class="flex flex-col items-center gap-1 p-3 bg-sky-50 border border-sky-100 rounded-xl text-center">
-            <span class="text-xl">{emoji}</span>
-            <span class="text-[11px] font-bold text-slate-700 leading-tight">{label}</span>
-          </div>
-        ))}
+        <!-- バッジ①：クリニックに忖度しない -->
+        <div class="trust-badge">
+          <svg viewBox="0 0 32 32" width="34" height="34" fill="none" stroke="#0ea5e9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 3L5 8v7c0 5.5 4.7 10.7 11 12.5C23.3 25.7 27 20.5 27 15V8L16 3z"/>
+            <line x1="12" y1="13" x2="20" y2="21"/>
+            <line x1="20" y1="13" x2="12" y2="21"/>
+          </svg>
+          <span class="trust-badge__label">クリニックに<br/>忖度しない</span>
+        </div>
+        <!-- バッジ②：添付文書・論文ベース -->
+        <div class="trust-badge">
+          <svg viewBox="0 0 32 32" width="34" height="34" fill="none" stroke="#0ea5e9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 4h13l5 5v19H6V4z"/>
+            <polyline points="19 4 19 9 24 9"/>
+            <line x1="10" y1="14" x2="20" y2="14"/>
+            <line x1="10" y1="18" x2="16" y2="18"/>
+            <circle cx="23" cy="24" r="4"/>
+            <line x1="26" y1="27" x2="29" y2="30"/>
+          </svg>
+          <span class="trust-badge__label">添付文書・<br/>論文ベース</span>
+        </div>
+        <!-- バッジ③：現役薬剤師が本音解説 -->
+        <div class="trust-badge">
+          <svg viewBox="0 0 32 32" width="34" height="34" fill="none" stroke="#0ea5e9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="10" r="4"/>
+            <path d="M4 28c0-4 3.1-7 7-7s7 3 7 7"/>
+            <path d="M19 7h9a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-1l-2 3-2-3h-4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z"/>
+          </svg>
+          <span class="trust-badge__label">現役薬剤師が<br/>本音解説</span>
+        </div>
       </div>
     </section>
 
     <!-- ③ クリニック比較バナー -->
-    <section class="mb-8 px-2">
+    <section class="mb-12 px-2">
       <a href="/articles/clinic/online-clinic-comparison" class="clinic-banner">
         <div>
           <p class="text-sm font-black text-white leading-snug mb-1">
@@ -107,7 +127,7 @@ const categoryGroups = [
 
     <!-- ④ カテゴリ別記事グリッド -->
     {categoryGroups.map(group => group.articles.length > 0 && (
-      <section id={group.key === 'ed' ? 'ed-section' : group.key === 'aga' ? 'aga-section' : undefined} class="mb-10 px-2">
+      <section id={group.key === 'ed' ? 'ed-section' : group.key === 'aga' ? 'aga-section' : undefined} class="mb-14 px-2">
         <!-- セクションヘッダー -->
         <div class="flex justify-between items-center mb-1">
           <h2 class="text-base font-black text-slate-800 flex items-center gap-2">
@@ -212,6 +232,25 @@ const categoryGroups = [
     font-weight: 700;
     color: #64748b;
     line-height: 1.2;
+  }
+
+  /* Trust badges */
+  .trust-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.85rem 0.5rem;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 0.875rem;
+    text-align: center;
+  }
+  .trust-badge__label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #334155;
+    line-height: 1.4;
   }
 
   /* Clinic banner */
