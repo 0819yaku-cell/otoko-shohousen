@@ -108,6 +108,28 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
     color: #1e293b;
   }
 
+  /* ====== 内部リンク：カード風 ====== */
+  .article-content :global(p > a[href^="/"]:only-child) {
+    display: block;
+    padding: 0.875rem 1rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #3b82f6;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #1e40af;
+    font-weight: 700;
+    font-size: 0.875rem;
+    margin: 0.5rem 0;
+    transition: all 0.2s;
+  }
+
+  .article-content :global(p > a[href^="/"]:only-child):hover {
+    background: #eff6ff;
+    border-left-color: #2563eb;
+    transform: translateX(4px);
+  }
+
   /* ====== h2：section-title風 ====== */
   .article-content :global(h2) {
     font-size: 1.25rem;
