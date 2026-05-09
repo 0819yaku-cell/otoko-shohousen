@@ -27,18 +27,16 @@ const normalizeEntries = (entries: any[], prefix: string) =>
     };
   });
 
-const [agaEntries, edEntries, mensHealthEntries, clinicEntries] = await Promise.all([
+const [agaEntries, edEntries, mensHealthEntries] = await Promise.all([
   getCollection('aga'),
   getCollection('ed'),
   getCollection('mens-health'),
-  getCollection('clinic'),
 ]);
 
 const allArticles = [
   ...normalizeEntries(agaEntries, 'aga'),
   ...normalizeEntries(edEntries, 'ed'),
   ...normalizeEntries(mensHealthEntries, 'mens-health'),
-  ...normalizeEntries(clinicEntries, 'clinic'),
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const relatedArticles = category
@@ -49,14 +47,6 @@ const relatedArticles = category
 <Layout title={title} description={description} noindex={noindex}>
   <slot name="head" slot="head" />
   <slot />
-
-  <div style="max-width: 600px; margin: 0 auto; padding: 0 1.5rem;">
-    <div style="background: linear-gradient(135deg, #0f2d5a, #0e7490); border-radius: 20px; padding: 1.75rem 1.5rem; text-align: center; margin: 2rem 0;">
-      <p style="font-size: 1.1rem; font-weight: 900; color: #ffffff; margin-bottom: 0.25rem;">ED・AGAの治療はオンラインクリニックが最速</p>
-      <p style="font-size: 0.85rem; color: #bae6fd; font-weight: 700; margin-bottom: 1.25rem;">DMM・レバクリ・イースト駅前を薬剤師が比較</p>
-      <a href="/articles/clinic" style="display: inline-block; background: linear-gradient(to right, #2563eb, #4f46e5); border-radius: 9999px; padding: 1rem 2rem; color: white; font-weight: 900; text-decoration: none;">クリニック比較を見る →</a>
-    </div>
-  </div>
 
   <AuthorBio />
 

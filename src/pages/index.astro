@@ -16,22 +16,19 @@ const normalizeEntries = (entries: any[], prefix: string) =>
     };
   });
 
-const [agaEntries, edEntries, mensHealthEntries, clinicEntries] = await Promise.all([
+const [agaEntries, edEntries, mensHealthEntries] = await Promise.all([
   getCollection('aga'),
   getCollection('ed'),
   getCollection('mens-health'),
-  getCollection('clinic'),
 ]);
 
-const edArticles     = normalizeEntries(edEntries, 'ed').sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-const agaArticles    = normalizeEntries(agaEntries, 'aga').sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-const clinicArticles = normalizeEntries(clinicEntries, 'clinic').sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-const mensArticles   = normalizeEntries(mensHealthEntries, 'mens-health').sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const edArticles   = normalizeEntries(edEntries, 'ed').sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const agaArticles  = normalizeEntries(agaEntries, 'aga').sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const mensArticles = normalizeEntries(mensHealthEntries, 'mens-health').sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const categoryGroups = [
   { key: 'ed',          label: 'ED治療薬ガイド',  href: '/articles/ed',          articles: edArticles },
   { key: 'aga',         label: 'AGA治療薬ガイド', href: '/articles/aga',         articles: agaArticles },
-  { key: 'clinic',      label: 'クリニック比較',   href: '/articles/clinic',      articles: clinicArticles },
   { key: 'mens-health', label: '男性の悩み',       href: '/articles/mens-health', articles: mensArticles },
 ];
 ---

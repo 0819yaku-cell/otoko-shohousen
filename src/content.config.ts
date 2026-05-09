@@ -27,9 +27,4 @@ const mensHealth = defineCollection({
   schema: articleSchema,
 });
 
-const clinic = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/clinic' }),
-  schema: articleSchema,
-});
-
-export const collections = { aga, ed, 'mens-health': mensHealth, clinic };
+export const collections = { aga, ed, 'mens-health': mensHealth };
