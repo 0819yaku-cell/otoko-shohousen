@@ -26,8 +26,13 @@ const edArticles   = normalizeEntries(edEntries, 'ed').sort((a, b) => new Date(b
 const agaArticles  = normalizeEntries(agaEntries, 'aga').sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 const mensArticles = normalizeEntries(mensHealthEntries, 'mens-health').sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-const categoryGroups = [
-  { key: 'ed',          label: 'ED治療薬ガイド',  href: '/articles/ed',          articles: edArticles },
+// ED: フィーチャーカード（1枚）＋グリッド（3枚）
+const edFeatured = edArticles.find(a => a.slug === 'ed-drug-comparison');
+const edGridSlugs = ['viagra-sildenafil-guide', 'cialis-tadalafil-guide', 'vardenafil-guide'];
+const edGridArticles = edGridSlugs.map(slug => edArticles.find(a => a.slug === slug)).filter(Boolean);
+
+// AGA・男性の悩みは既存ループで表示
+const otherGroups = [
   { key: 'aga',         label: 'AGA治療薬ガイド', href: '/articles/aga',         articles: agaArticles },
   { key: 'mens-health', label: '男性の悩み',       href: '/articles/mens-health', articles: mensArticles },
 ];
@@ -120,9 +125,63 @@ const categoryGroups = [
       </div>
     </section>
 
-    <!-- ④ カテゴリ別記事グリッド -->
-    {categoryGroups.map(group => group.articles.length > 0 && (
-      <section id={group.key === 'ed' ? 'ed-section' : group.key === 'aga' ? 'aga-section' : undefined} class="mb-20 px-2">
+    <!-- ③ ED治療薬ガイド（フィーチャーカード＋2×2グリッド） -->
+    <section id="ed-section" class="mb-20 px-2">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-base font-black text-slate-800 flex items-center gap-2">
+          <span class="w-1.5 h-5 bg-sky-500 rounded-full flex-shrink-0"></span>
+          ED治療薬ガイド
+        </h2>
+        <a href="/articles/ed" class="category-list-btn">
+          <span>記事一覧をみる</span>
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </a>
+      </div>
+
+      {edFeatured && (
+        <a href={edFeatured.href} class="article-card-featured">
+          <div class="article-card-featured-image">
+            {edFeatured.image
+              ? <img src={edFeatured.image} alt={edFeatured.title} loading="lazy" />
+              : <div class="article-card-image-placeholder"></div>
+            }
+          </div>
+          <div class="article-card-body">
+            {edFeatured.category && (
+              <span class="article-category-badge">{edFeatured.category}</span>
+            )}
+            <h3 class="article-card-title">{edFeatured.title}</h3>
+            <p class="article-card-desc">{edFeatured.description}</p>
+          </div>
+        </a>
+      )}
+
+      <div class="articles-grid">
+        {edGridArticles.map(article => (
+          <a href={article.href} class="article-card">
+            <div class="article-card-image">
+              {article.image
+                ? <img src={article.image} alt={article.title} loading="lazy" />
+                : <div class="article-card-image-placeholder"></div>
+              }
+            </div>
+            <div class="article-card-body">
+              {article.category && (
+                <span class="article-category-badge">{article.category}</span>
+              )}
+              <h3 class="article-card-title">{article.title}</h3>
+              <p class="article-card-desc">{article.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ④ AGA・男性の悩み -->
+    {otherGroups.map(group => group.articles.length > 0 && (
+      <section id={group.key === 'aga' ? 'aga-section' : undefined} class="mb-20 px-2">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-base font-black text-slate-800 flex items-center gap-2">
             <span class="w-1.5 h-5 bg-sky-500 rounded-full flex-shrink-0"></span>
@@ -293,6 +352,37 @@ const categoryGroups = [
     transition: background 0.2s;
   }
   .category-list-btn:hover { background: #e0f2fe; }
+
+  /* フィーチャーカード（全幅・画像上・テキスト下） */
+  .article-card-featured {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    text-decoration: none;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .article-card-featured:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+    border-color: #e0f2fe;
+  }
+  .article-card-featured-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #f8fafc;
+  }
+  .article-card-featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   /* Article card grid */
   .articles-grid {
