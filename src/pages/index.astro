@@ -26,9 +26,9 @@ const edArticles   = normalizeEntries(edEntries, 'ed').sort((a, b) => new Date(b
 const agaArticles  = normalizeEntries(agaEntries, 'aga').sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 const mensArticles = normalizeEntries(mensHealthEntries, 'mens-health').sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-// ED: フィーチャーカード（1枚）＋グリッド（3枚）
-const edFeatured = edArticles.find(a => a.slug === 'ed-drug-comparison');
-const edGridSlugs = ['viagra-sildenafil-guide', 'cialis-tadalafil-guide', 'vardenafil-guide'];
+// ED: フィーチャーカード（1枚）＋グリッド（4枚）
+const edFeatured = edArticles.find(a => a.slug === 'ed-online-clinic-comparison');
+const edGridSlugs = ['ed-drug-comparison', 'viagra-sildenafil-guide', 'cialis-tadalafil-guide', 'vardenafil-guide'];
 const edGridArticles = edGridSlugs.map(slug => edArticles.find(a => a.slug === slug)).filter(Boolean);
 
 // AGA・男性の悩みは既存ループで表示
@@ -352,6 +352,13 @@ const otherGroups = [
     transition: background 0.2s;
   }
   .category-list-btn:hover { background: #e0f2fe; }
+
+  /* EDグリッド: スマホ(≤480px)は1カラム、PC(>480px)は2カラム */
+  @media (max-width: 480px) {
+    #ed-section .articles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 
   /* フィーチャーカード（全幅・画像上・テキスト下） */
   .article-card-featured {
