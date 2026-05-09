@@ -120,22 +120,6 @@ const categoryGroups = [
       </div>
     </section>
 
-    <!-- ③ クリニック比較バナー（2分割） -->
-    <section class="mb-16 px-2">
-      <div class="grid grid-cols-2 gap-3">
-        <a href="/articles/ed/ed-clinic-comparison" class="clinic-card">
-          <p class="clinic-card__title">ED治療<br/>クリニック比較</p>
-          <p class="clinic-card__sub">DMM・レバクリ・イースト駅前</p>
-          <span class="clinic-card__btn">比較を見る →</span>
-        </a>
-        <a href="/articles/aga/aga-clinic-comparison" class="clinic-card">
-          <p class="clinic-card__title">AGA治療<br/>クリニック比較</p>
-          <p class="clinic-card__sub">DMM・レバクリ・イースト駅前</p>
-          <span class="clinic-card__btn">比較を見る →</span>
-        </a>
-      </div>
-    </section>
-
     <!-- ④ カテゴリ別記事グリッド -->
     {categoryGroups.map(group => group.articles.length > 0 && (
       <section id={group.key === 'ed' ? 'ed-section' : group.key === 'aga' ? 'aga-section' : undefined} class="mb-20 px-2">
