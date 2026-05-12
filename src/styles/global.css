@@ -186,3 +186,36 @@ button {
 .animate-pop-in {
   animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
+
+/* ── カラーボックス ── */
+.callout-point,
+.callout-warn,
+.callout-summary {
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 24px 0;
+  box-sizing: border-box;
+  width: 100%;
+  line-height: 1.7;
+}
+
+/* 青系：ポイント・重要な情報 */
+.callout-point {
+  border-left: 4px solid #0284c7;
+  background-color: #f0f9ff;
+  color: #0c4a6e;
+}
+
+/* 黄系：注意事項 */
+.callout-warn {
+  border-left: 4px solid #d97706;
+  background-color: #fffbeb;
+  color: #78350f;
+}
+
+/* グレー系：まとめ・補足 */
+.callout-summary {
+  border-left: 4px solid #64748b;
+  background-color: #f8fafc;
+  color: #334155;
+}
