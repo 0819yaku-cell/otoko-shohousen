@@ -31,10 +31,14 @@ const edFeatured = edArticles.find(a => a.slug === 'ed-online-clinic-comparison'
 const edGridSlugs = ['ed-drug-comparison', 'viagra-sildenafil-guide', 'cialis-tadalafil-guide', 'vardenafil-guide'];
 const edGridArticles = edGridSlugs.map(slug => edArticles.find(a => a.slug === slug)).filter(Boolean);
 
-// AGA・男性の悩みは既存ループで表示
+// AGA: フィーチャーカード（1枚）＋グリッド（4枚）
+const agaFeatured = agaArticles.find(a => a.slug === 'aga-online-clinic-comparison');
+const agaGridSlugs = ['finasteride-vs-dutasteride', 'minoxidil-oral-vs-topical', 'aga-drug-side-effects', 'riup-comparison-aga-otc'];
+const agaGridArticles = agaGridSlugs.map(slug => agaArticles.find(a => a.slug === slug)).filter(Boolean);
+
+// 男性の悩みは既存ループで表示
 const otherGroups = [
-  { key: 'aga',         label: 'AGA治療薬ガイド', href: '/articles/aga',         articles: agaArticles },
-  { key: 'mens-health', label: '男性の悩み',       href: '/articles/mens-health', articles: mensArticles },
+  { key: 'mens-health', label: '男性の悩み', href: '/articles/mens-health', articles: mensArticles },
 ];
 ---
 
@@ -179,9 +183,63 @@ const otherGroups = [
       </div>
     </section>
 
-    <!-- ④ AGA・男性の悩み -->
+    <!-- ④ AGA治療薬ガイド（フィーチャーカード＋2×2グリッド） -->
+    <section id="aga-section" class="mb-20 px-2">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-base font-black text-slate-800 flex items-center gap-2">
+          <span class="w-1.5 h-5 bg-sky-500 rounded-full flex-shrink-0"></span>
+          AGA治療薬ガイド
+        </h2>
+        <a href="/articles/aga" class="category-list-btn">
+          <span>記事一覧をみる</span>
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </a>
+      </div>
+
+      {agaFeatured && (
+        <a href={agaFeatured.href} class="article-card-featured">
+          <div class="article-card-featured-image">
+            {agaFeatured.image
+              ? <img src={agaFeatured.image} alt={agaFeatured.title} loading="lazy" />
+              : <div class="article-card-image-placeholder"></div>
+            }
+          </div>
+          <div class="article-card-body">
+            {agaFeatured.category && (
+              <span class="article-category-badge">{agaFeatured.category}</span>
+            )}
+            <h3 class="article-card-title">{agaFeatured.title}</h3>
+            <p class="article-card-desc">{agaFeatured.description}</p>
+          </div>
+        </a>
+      )}
+
+      <div class="articles-grid">
+        {agaGridArticles.map(article => (
+          <a href={article.href} class="article-card">
+            <div class="article-card-image">
+              {article.image
+                ? <img src={article.image} alt={article.title} loading="lazy" />
+                : <div class="article-card-image-placeholder"></div>
+              }
+            </div>
+            <div class="article-card-body">
+              {article.category && (
+                <span class="article-category-badge">{article.category}</span>
+              )}
+              <h3 class="article-card-title">{article.title}</h3>
+              <p class="article-card-desc">{article.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ⑤ 男性の悩み -->
     {otherGroups.map(group => group.articles.length > 0 && (
-      <section id={group.key === 'aga' ? 'aga-section' : undefined} class="mb-20 px-2">
+      <section id={undefined} class="mb-20 px-2">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-base font-black text-slate-800 flex items-center gap-2">
             <span class="w-1.5 h-5 bg-sky-500 rounded-full flex-shrink-0"></span>
