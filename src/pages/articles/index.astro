@@ -15,18 +15,16 @@ const normalizeEntries = (entries: any[], prefix: string) =>
     };
   });
 
-const [agaEntries, edEntries, mensHealthEntries, clinicEntries] = await Promise.all([
+const [agaEntries, edEntries, mensHealthEntries] = await Promise.all([
   getCollection('aga'),
   getCollection('ed'),
   getCollection('mens-health'),
-  getCollection('clinic'),
 ]);
 
 const articles = [
   ...normalizeEntries(agaEntries, 'aga'),
   ...normalizeEntries(edEntries, 'ed'),
   ...normalizeEntries(mensHealthEntries, 'mens-health'),
-  ...normalizeEntries(clinicEntries, 'clinic'),
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 ---
 
