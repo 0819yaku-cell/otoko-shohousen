@@ -66,11 +66,6 @@ iframe {
   display: block;
 }
 
-/* テーブルはスクロールラッパー内で横スクロールさせるためmax-widthを解除 */
-table {
-  max-width: none;
-}
-
 html {
   overflow-x: hidden;
 }

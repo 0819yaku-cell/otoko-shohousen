@@ -200,6 +200,8 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
   /* ====== テーブル：hikaku-table風 ====== */
   .article-content :global(table) {
     width: 100%;
+    min-width: max-content;
+    max-width: none;
     table-layout: auto;
     border-collapse: collapse;
     font-size: 0.875rem;
