@@ -219,3 +219,25 @@ button {
   background-color: #f8fafc;
   color: #334155;
 }
+
+/* ── インラインハイライト ── */
+.marker-yellow {
+  background-color: #fef08a;
+  padding: 0.1em 0.25em;
+  border-radius: 3px;
+}
+
+.marker-blue {
+  background-color: var(--color-primary-light);
+  padding: 0.1em 0.25em;
+  border-radius: 3px;
+}
+
+.text-red {
+  color: #dc2626;
+}
+
+.text-bold-blue {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
