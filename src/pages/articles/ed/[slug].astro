@@ -35,6 +35,7 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
         </p>
       )}
 
+      <div id="toc-placeholder"></div>
       <Content />
 
       <div class="back-nav mt-8 text-center">
@@ -76,6 +77,41 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
   }
   document.addEventListener('DOMContentLoaded', wrapTables);
   document.addEventListener('astro:page-load', wrapTables);
+
+  function buildTOC() {
+    if (document.querySelector('.toc-nav')) return;
+    const placeholder = document.getElementById('toc-placeholder');
+    const content = document.querySelector('.article-content');
+    if (!placeholder || !content) return;
+
+    const h2s = Array.from(content.querySelectorAll('h2'));
+    if (h2s.length < 3) { placeholder.remove(); return; }
+
+    h2s.forEach((h2, i) => { if (!h2.id) h2.id = `toc-${i}`; });
+
+    const nav = document.createElement('nav');
+    nav.className = 'toc-nav';
+    nav.setAttribute('aria-label', '目次');
+    nav.innerHTML = `
+      <button class="toc-toggle" aria-expanded="false">
+        <span class="toc-title-text">目次</span>
+        <span class="toc-chevron">▾</span>
+      </button>
+      <div class="toc-list" hidden>
+        ${h2s.map((h2, i) => `<div class="toc-item"><a href="#toc-${i}" class="toc-link">${h2.textContent.trim()}</a></div>`).join('')}
+      </div>
+    `;
+    placeholder.replaceWith(nav);
+
+    nav.querySelector('.toc-toggle').addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!expanded));
+      nav.querySelector('.toc-list').hidden = expanded;
+      nav.querySelector('.toc-chevron').textContent = expanded ? '▾' : '▴';
+    });
+  }
+  document.addEventListener('DOMContentLoaded', buildTOC);
+  document.addEventListener('astro:page-load', buildTOC);
 
   function styleAmazonLinks() {
     document.querySelectorAll<HTMLAnchorElement>('a[href*="amzn"]').forEach(el => {

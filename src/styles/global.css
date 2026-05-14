@@ -220,6 +220,63 @@ button {
   color: #334155;
 }
 
+/* ── TOC（目次）── */
+.toc-nav {
+  margin-bottom: 2rem;
+  border: 1px solid #bae6fd;
+  border-left: 3px solid #0284c7;
+  border-radius: 8px;
+  background: #f0f9ff;
+  overflow: hidden;
+}
+
+.toc-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #0284c7;
+}
+
+.toc-toggle:hover {
+  background: #e0f2fe;
+}
+
+.toc-chevron {
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+.toc-list {
+  padding: 0 0.875rem 0.75rem;
+}
+
+.toc-item + .toc-item {
+  border-top: 1px solid #e0f2fe;
+}
+
+.toc-link {
+  display: block;
+  padding: 0.4rem 0.125rem;
+  font-size: 0.8rem;
+  color: #0369a1;
+  text-decoration: none;
+  line-height: 1.5;
+  transition: color 0.15s, padding-left 0.15s;
+}
+
+.toc-link:hover {
+  color: #0284c7;
+  padding-left: 0.25rem;
+}
+
+.article-content h2 {
+  scroll-margin-top: 1rem;
+}
+
 /* ── インラインハイライト ── */
 .marker-yellow {
   background-color: #fef08a;
