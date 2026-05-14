@@ -230,28 +230,16 @@ button {
   overflow: hidden;
 }
 
-.toc-toggle {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.65rem 1rem;
-  font-size: 0.85rem;
+.toc-header {
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
   font-weight: 800;
   color: #0284c7;
-}
-
-.toc-toggle:hover {
-  background: #e0f2fe;
-}
-
-.toc-chevron {
-  font-size: 0.7rem;
-  flex-shrink: 0;
+  border-bottom: 1px solid #e0f2fe;
 }
 
 .toc-list {
-  padding: 0 0.875rem 0.75rem;
+  padding: 0.25rem 0.875rem 0.75rem;
 }
 
 .toc-item + .toc-item {

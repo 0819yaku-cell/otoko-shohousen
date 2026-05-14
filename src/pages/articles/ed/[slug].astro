@@ -93,22 +93,12 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
     nav.className = 'toc-nav';
     nav.setAttribute('aria-label', '目次');
     nav.innerHTML = `
-      <button class="toc-toggle" aria-expanded="false">
-        <span class="toc-title-text">目次</span>
-        <span class="toc-chevron">▾</span>
-      </button>
-      <div class="toc-list" hidden>
-        ${h2s.map((h2, i) => `<div class="toc-item"><a href="#toc-${i}" class="toc-link">${h2.textContent.trim()}</a></div>`).join('')}
+      <div class="toc-header">目次</div>
+      <div class="toc-list">
+        ${h2s.map((h2) => `<div class="toc-item"><a href="#${h2.id}" class="toc-link">${h2.textContent.trim()}</a></div>`).join('')}
       </div>
     `;
     placeholder.replaceWith(nav);
-
-    nav.querySelector('.toc-toggle').addEventListener('click', function() {
-      const expanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', String(!expanded));
-      nav.querySelector('.toc-list').hidden = expanded;
-      nav.querySelector('.toc-chevron').textContent = expanded ? '▾' : '▴';
-    });
   }
   document.addEventListener('DOMContentLoaded', buildTOC);
   document.addEventListener('astro:page-load', buildTOC);
