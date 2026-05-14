@@ -50,13 +50,28 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
       if (table.parentElement?.classList.contains('table-scroll')) return;
       const wrapper = document.createElement('div');
       wrapper.className = 'table-scroll';
-      wrapper.style.cssText = 'overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:1.5rem;border-radius:1.5rem;border:1px solid #e2e8f0;box-shadow:0 1px 3px rgba(0,0,0,0.05);';
+      wrapper.style.cssText = 'overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:0.25rem;border-radius:1.5rem;border:1px solid #e2e8f0;box-shadow:0 1px 3px rgba(0,0,0,0.05);';
       table.style.marginBottom = '0';
       table.style.borderRadius = '0';
       table.style.border = 'none';
       table.style.boxShadow = 'none';
       table.parentNode!.insertBefore(wrapper, table);
       wrapper.appendChild(table);
+
+      requestAnimationFrame(() => {
+        if (table.scrollWidth > wrapper.clientWidth) {
+          const hint = document.createElement('p');
+          hint.textContent = '↔ 横にスクロールできます';
+          hint.style.cssText = 'font-size:0.7rem;color:#94a3b8;text-align:center;margin:0.25rem 0 1.25rem;pointer-events:none;';
+          wrapper.insertAdjacentElement('afterend', hint);
+          wrapper.addEventListener('scroll', () => {
+            hint.style.transition = 'opacity 0.4s';
+            hint.style.opacity = '0';
+          }, { once: true });
+        } else {
+          wrapper.style.marginBottom = '1.5rem';
+        }
+      });
     });
   }
   document.addEventListener('DOMContentLoaded', wrapTables);
