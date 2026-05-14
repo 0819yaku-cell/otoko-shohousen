@@ -45,6 +45,23 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
 </ArticleLayout>
 
 <script>
+  function wrapTables() {
+    document.querySelectorAll('.article-content table').forEach(table => {
+      if (table.parentElement?.classList.contains('table-scroll')) return;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'table-scroll';
+      wrapper.style.cssText = 'overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:1.5rem;border-radius:1.5rem;border:1px solid #e2e8f0;box-shadow:0 1px 3px rgba(0,0,0,0.05);';
+      table.style.marginBottom = '0';
+      table.style.borderRadius = '0';
+      table.style.border = 'none';
+      table.style.boxShadow = 'none';
+      table.parentNode!.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
+    });
+  }
+  document.addEventListener('DOMContentLoaded', wrapTables);
+  document.addEventListener('astro:page-load', wrapTables);
+
   function styleAmazonLinks() {
     document.querySelectorAll<HTMLAnchorElement>('a[href*="amzn"]').forEach(el => {
       Object.assign(el.style, {
@@ -113,7 +130,7 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
   /* ====== Markdown要素の共通スタイル ====== */
   .article-content :global(p) {
     font-size: 0.95rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
     color: #334155;
   }
 
@@ -161,7 +178,7 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
     font-size: 1.05rem;
     font-weight: 900;
     color: #0d9488;
-    margin-top: 1.75rem;
+    margin-top: 2rem;
     margin-bottom: 0.75rem;
   }
 
@@ -175,11 +192,11 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
   }
 
   .article-content :global(ul li) {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #334155;
     padding-left: 1.5rem;
     position: relative;
-    line-height: 1.65;
+    line-height: 1.75;
   }
 
   .article-content :global(ul li)::before {
@@ -201,9 +218,9 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
   }
 
   .article-content :global(ol li) {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #334155;
-    line-height: 1.65;
+    line-height: 1.75;
     padding-left: 0.25rem;
   }
 
@@ -215,7 +232,7 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
     font-size: 0.875rem;
     margin-bottom: 1.5rem;
     border-radius: 1.5rem;
-    overflow: hidden;
+    overflow: visible;
     border: 1px solid #e2e8f0;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
@@ -252,7 +269,7 @@ const eyecatchPath = entry.data.image ?? `/記事画像/${urlSlug}.webp`;
   .article-content :global(tbody td) {
     padding: 0.875rem 1rem;
     vertical-align: middle;
-    line-height: 1.5;
+    line-height: 1.6;
     color: #475569;
     font-size: 0.875rem;
   }
