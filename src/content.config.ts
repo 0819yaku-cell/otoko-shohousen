@@ -10,6 +10,7 @@ const articleSchema = z.object({
   affiliateNote: z.string().optional(),
   slug: z.string().optional(),
   image: z.string().optional(),
+  faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(),
 });
 
 const aga = defineCollection({
